@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
+import { v4 as uuid} from "uuid"
 
 export class UsersForm extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ export class UsersForm extends Component {
     this.handleChange = (e) => {
       e.preventDefault();
       this.setState({
+        id: uuid(),
         [e.target.name]: e.target.value,
       });
     };

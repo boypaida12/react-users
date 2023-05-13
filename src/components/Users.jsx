@@ -5,13 +5,16 @@ import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 
 function Users(props) {
+  const handleDelete = (userId) => {
+    props.deleteUser(userId)
+  }
   return (
     <>
       <Container className="mt-4">
         <Row>
           {props.usersjsx.map((user, index) => (
             <Col key={index}>
-              <Card style={{ width: "18rem", marginBottom: "2rem" }}>
+              <Card style={{ width: "14rem", marginBottom: "2rem" }}>
                 <Card.Body>
                   <Card.Title>User Details</Card.Title>
                   <Card.Text>
@@ -27,6 +30,7 @@ function Users(props) {
                     <button
                       type="submit"
                       style={{ backgroundColor: "#D22B2B" }}
+                      onClick={()=>handleDelete(user.id)}
                     >
                       Delete
                     </button>
