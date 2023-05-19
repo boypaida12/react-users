@@ -23,7 +23,6 @@ export class EditUserForm extends Component {
 
     this.handleSubmit = (e) => {
       e.preventDefault();
-      // console.log(this.state)
       this.props.editUser(this.state.id, this.state)
       this.props.closeModal()
     };
