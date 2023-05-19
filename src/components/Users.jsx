@@ -6,17 +6,17 @@ import { Card, Col, Container, Modal, Row } from "react-bootstrap";
 import EditUserForm from "./EditUserForm";
 
 function Users(props) {
-  const [lgShow, setShow] = useState(false);
+  const [lgShow, setLgShow] = useState(false);
   const [editUser, setEditUser] = useState(null);
 
   const handleClose = () => {
-    setShow(false);
+    setLgShow(false);
     setEditUser(null)
   };
 
   const handleShow = (user) => {
     setEditUser(user);
-    setShow(true)
+    setLgShow(true)
   };
 
   const handleDelete = (userId) => {
