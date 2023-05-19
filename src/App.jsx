@@ -35,6 +35,10 @@ function App() {
     setUsers(users.filter((user) => user.id !== userId));
   }
 
+  const handleEditUser = (id, updatedUser) => {
+    setUsers(users.map((user) => user.id === id ? updatedUser : user))
+  }
+
   return (
     <>
   
@@ -44,7 +48,7 @@ function App() {
           <UsersForm userDetail={handleAddUser} />
         </Col>
         <Col className="border border-3 rounded-2 my-4">
-          <Users usersjsx={users} deleteUser={handleDeleteUser}/>
+          <Users usersjsx={users} deleteUser={handleDeleteUser} editUsers ={handleEditUser}/>
         </Col>
       </Row>
     </Container>

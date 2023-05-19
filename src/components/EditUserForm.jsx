@@ -3,39 +3,30 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
-import { v4 as uuid} from "uuid"
 
-export class UsersForm extends Component {
+export class EditUserForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      email: "",
-      gen: "",
+      id: props.editUserDetail.id,
+      name: props.editUserDetail.name,
+      email: props.editUserDetail.email,
+      gen: props.editUserDetail.gen,
     };
 
     this.handleChange = (e) => {
       e.preventDefault();
       this.setState({
-        id: uuid(),
         [e.target.name]: e.target.value,
       });
     };
 
-    this.handleReset = ()=> {
-      this.setState({
-        name: "",
-        email: "",
-        gen: "",
-      })
-    }
-
     this.handleSubmit = (e) => {
       e.preventDefault();
       // console.log(this.state)
-      this.props.userDetail(this.state);
-      this.handleReset()
-    }
+      this.props.editUser(this.state.id, this.state)
+      this.props.closeModal()
+    };
   }
   render() {
     return (
@@ -87,4 +78,4 @@ export class UsersForm extends Component {
   }
 }
 
-export default UsersForm;
+export default EditUserForm;
