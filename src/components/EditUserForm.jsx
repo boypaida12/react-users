@@ -23,8 +23,8 @@ export class EditUserForm extends Component {
 
     this.handleSubmit = (e) => {
       e.preventDefault();
-      this.props.editUser(this.state.id, this.state)
-      this.props.closeModal()
+      this.props.editUser(this.state.id, this.state);
+      this.props.closeModal();
     };
   }
   render() {

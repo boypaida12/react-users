@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
-import { v4 as uuid} from "uuid"
+import { v4 as uuid } from "uuid";
 
 export class UsersForm extends Component {
   constructor(props) {
@@ -22,20 +22,20 @@ export class UsersForm extends Component {
       });
     };
 
-    this.handleReset = ()=> {
+    this.handleReset = () => {
       this.setState({
         name: "",
         email: "",
         gen: "",
-      })
-    }
+      });
+    };
 
     this.handleSubmit = (e) => {
       e.preventDefault();
       // console.log(this.state)
       this.props.userDetail(this.state);
-      this.handleReset()
-    }
+      this.handleReset();
+    };
   }
   render() {
     return (

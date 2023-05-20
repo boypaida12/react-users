@@ -7,16 +7,16 @@ import EditUserForm from "./EditUserForm";
 
 function Users(props) {
   const [lgShow, setLgShow] = useState(false);
-  const [editUser, setEditUser] = useState(null);
+  const [editUser, setEditUser] = useState(null); //useState hook to handle prefilled information of users in modal
 
   const handleClose = () => {
     setLgShow(false);
-    setEditUser(null)
+    setEditUser(null);
   };
 
   const handleShow = (user) => {
-    setEditUser(user);
-    setLgShow(true)
+    setEditUser(user); //setState takes the paramater of user because handle show is passed as an onclick function which resides in the map function to generate prefilled information for each user
+    setLgShow(true);
   };
 
   const handleDelete = (userId) => {
@@ -62,7 +62,12 @@ function Users(props) {
           <Modal.Title>Edit User Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <EditUserForm editUserDetail={editUser} editUser={props.editUsers} closeModal={handleClose}/>
+          {/* {editUser} is passed as a prop to be used inside the editUserForm state to retrieve the current user information is which displayed as the prefilled information */}
+          <EditUserForm
+            editUserDetail={editUser}
+            editUser={props.editUsers}
+            closeModal={handleClose}
+          />
         </Modal.Body>
       </Modal>
     </>

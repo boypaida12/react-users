@@ -11,19 +11,19 @@ function App() {
       name: "John",
       email: "email@example.com",
       gen: 23,
-      id: uuid()
+      id: uuid(),
     },
     {
       name: "Ama",
       email: "ama@example.com",
       gen: 23,
-      id: uuid()
+      id: uuid(),
     },
     {
       name: "Peter",
       email: "peter@example.com",
       gen: 23,
-      id: uuid()
+      id: uuid(),
     },
   ]);
 
@@ -33,25 +33,28 @@ function App() {
 
   const handleDeleteUser = (userId) => {
     setUsers(users.filter((user) => user.id !== userId));
-  }
+  };
 
   const handleEditUser = (id, updatedUser) => {
-    setUsers(users.map((user) => user.id === id ? updatedUser : user))
-  }
+    setUsers(users.map((user) => (user.id === id ? updatedUser : user)));
+  };
 
   return (
     <>
-  
-    <Container>
-      <Row className="gap-2">
-        <Col md={3}>
-          <UsersForm userDetail={handleAddUser} />
-        </Col>
-        <Col className="border border-3 rounded-2 my-4">
-          <Users usersjsx={users} deleteUser={handleDeleteUser} editUsers ={handleEditUser}/>
-        </Col>
-      </Row>
-    </Container>
+      <Container>
+        <Row className="gap-2">
+          <Col md={3}>
+            <UsersForm userDetail={handleAddUser} />
+          </Col>
+          <Col className="border border-3 rounded-2 my-4">
+            <Users
+              usersjsx={users}
+              deleteUser={handleDeleteUser}
+              editUsers={handleEditUser}
+            />
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }
