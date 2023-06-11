@@ -4,14 +4,21 @@
 import React, { useState } from "react";
 import { Card, Col, Container, Modal, Row } from "react-bootstrap";
 import EditUserForm from "./EditUserForm";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { deleteUser } from "../slices/usersSlice";
 
-function Users(props) {
+function Users() {
+  const state = useSelector((state) => {
+    return state.userReducer;
+  });
+
+  const dispatch = useDispatch();
   const [lgShow, setLgShow] = useState(false);
   const [editUser, setEditUser] = useState(null); //useState hook to handle prefilled information of users in modal
 
   const handleClose = () => {
     setLgShow(false);
-    setEditUser(null);
   };
 
   const handleShow = (user) => {
@@ -20,14 +27,16 @@ function Users(props) {
   };
 
   const handleDelete = (userId) => {
-    props.deleteUser(userId);
+    // props.deleteUser(userId);
+    console.log('deleted')
+    dispatch(deleteUser(userId))
   };
 
   return (
     <>
       <Container className="mt-4">
         <Row>
-          {props.usersjsx.map((user, index) => (
+          {state.users.map((user, index) => (
             <Col key={index}>
               <Card style={{ width: "16rem", marginBottom: "2rem" }}>
                 <Card.Body>
@@ -63,11 +72,7 @@ function Users(props) {
         </Modal.Header>
         <Modal.Body>
           {/* {editUser} is passed as a prop to be used inside the editUserForm state to retrieve the current user information is which displayed as the prefilled information */}
-          <EditUserForm
-            editUserDetail={editUser}
-            editUser={props.editUsers}
-            closeModal={handleClose}
-          />
+          <EditUserForm editUserDetail={editUser} closeModal={handleClose} />
         </Modal.Body>
       </Modal>
     </>
